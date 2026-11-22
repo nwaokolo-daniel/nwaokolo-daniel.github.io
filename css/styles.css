@@ -1,0 +1,967 @@
+/* ==========================================================
+   Nwaokolo Daniel portfolio
+   Plum, blush and gold on a soft paper background,
+   DM Serif Display headings, DM Sans body.
+   Tokens first, then base, then one block per section.
+   ========================================================== */
+
+:root {
+  --plum: #5E2A50;
+  --mauve: #9A5F8A;
+  --mauve-text: #8A4F7A;
+  --blush: #F3C9E3;
+  --paper: #FAF7FA;
+  --card: #FFFFFF;
+  --border: #E9E1E8;
+  --ink: #2B2330;
+  --ink-soft: #5A5060;
+  --on-dark: #E7D3E1;
+  --tint: #F6E9F1;
+  --gold: #E3B866;
+  --gold-deep: #8A6410;
+  --gold-tint: #FBF1D9;
+  --good: #17613D;
+  --good-tint: #E6F3EA;
+
+  --serif: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --sans: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --gutter: 1.25rem;
+  --max: 70rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .button { transition: none; }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+p { margin: 0 0 1rem; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Small tracked labels (buttons, nav button, captions) */
+.label {
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: -4rem;
+  background: var(--plum);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  z-index: 100;
+}
+.skip-link:focus { top: 0.5rem; }
+
+/* ---------- Buttons ---------- */
+
+.button {
+  display: inline-block;
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 1rem 1.75rem;
+  border-radius: 3px;
+  min-height: 2.75rem;
+  line-height: 1.3;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.button:hover { opacity: 0.9; transform: translateY(-1px); }
+.button-gold { background: var(--gold); color: var(--plum); }
+.button-plum { background: var(--plum); color: #fff; }
+.button-outline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  padding: calc(1rem - 1px) calc(1.75rem - 1px);
+}
+
+/* ---------- Header and menu ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem 2rem;
+  min-height: 4rem;
+  max-width: 76rem;
+}
+
+/* Wide screens: the menu links spread evenly across the full header */
+@media (min-width: 80rem) {
+  .site-nav { width: 100%; }
+  .site-nav ul { justify-content: space-between; }
+}
+
+/* The name shows at the left whenever the menu is collapsed; the wide desktop header stays as it was */
+.brand {
+  display: none;
+  margin-right: auto;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: var(--plum);
+  text-decoration: none;
+}
+@media (max-width: 79.99rem) {
+  .brand { display: block; }
+}
+
+.menu-button {
+  display: none;
+  font: inherit;
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--plum);
+  background: none;
+  border: 1.5px solid var(--plum);
+  border-radius: 3px;
+  padding: 0.4rem 1.1rem;
+  min-height: 2.75rem;
+  cursor: pointer;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a:not(.button) {
+  display: block;
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+}
+.site-nav .button {
+  padding: 0.8rem 1.25rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.site-nav a:not(.button):hover { color: var(--plum); text-decoration: underline; text-underline-offset: 0.3em; }
+
+/* Phones, tablets and small laptops: the menu collapses (only when JavaScript is running) */
+@media (max-width: 79.99rem) {
+  .js .menu-button { display: inline-block; }
+
+  .js .site-nav {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: var(--paper);
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem var(--gutter) 1.5rem;
+  }
+  .js .site-nav.is-open { display: block; }
+
+  .site-nav ul { flex-direction: column; align-items: stretch; gap: 0; }
+  .site-nav a:not(.button) {
+    padding: 0.9rem 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .site-nav li:last-child { margin-top: 1.25rem; }
+  .site-nav li:last-child .button { display: block; text-align: center; }
+
+  /* Without JavaScript the links simply wrap under the name */
+  html:not(.js) .header-inner { flex-direction: column; align-items: flex-start; padding-block: 0.75rem; }
+}
+
+/* ---------- 1. Who I Am ---------- */
+
+.hero {
+  background: var(--plum);
+  color: #fff;
+  padding: 2.5rem 0 3.5rem;
+}
+
+.hero-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* Portrait: reserved space. The photo (assets/daniel.jpg) fills it when it exists. */
+.portrait {
+  position: relative;
+  margin: 0;
+  width: 8.5rem;
+  flex: none;
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.portrait svg { width: 3.5rem; height: 3.5rem; }
+.portrait img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Photo space with the certificate shown beside it (phones) or under it (wider screens) */
+.hero-visual {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.portrait-cert {
+  margin: 0;
+  background: var(--gold);
+  color: var(--plum);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  padding: 0.85rem 1.1rem;
+  border-radius: 12px;
+  max-width: 15rem;
+}
+
+/* Hierarchy: small greeting, large headline, short line, tool chips, buttons */
+.hero-greeting {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  line-height: 1.2;
+  color: var(--blush);
+  margin: 0 0 1rem;
+  padding-left: 2.5rem; /* the space the dash used to take, so the greeting sits in from the headline */
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 7vw, 3.25rem);
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+}
+.hero-chips li {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  padding: 0.3rem 1rem;
+}
+.hero h1 .accent { color: var(--gold); }
+/* On wide screens the headline sits on four set lines; below that it wraps naturally */
+.hl-br { display: none; }
+@media (min-width: 64rem) {
+  .hero-text { container-type: inline-size; }
+  .hl-br { display: inline; }
+  .hero h1 { font-size: min(3.25rem, calc(100cqw / 10.4)); }
+}
+
+.hero p { max-width: 34rem; }
+.lead {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0 0;
+  max-width: none;
+}
+
+/* Proof bar: three cards sitting across the bottom edge of the hero */
+.proof { position: relative; margin-top: -3.5rem; padding-bottom: 4rem; }
+.proof-grid {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  margin-block: 0;
+  padding-block: 0;
+}
+/* On phones and tablets the cards line up with the text above (the list's default indent is removed) */
+@media (max-width: 63.99rem) {
+  .proof-grid { padding-inline: 0; }
+}
+.proof-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem 1.5rem 1.75rem;
+  color: var(--plum);
+}
+.proof-card.is-gold { background: var(--gold); border-color: var(--gold); }
+.proof-card.is-blush { background: var(--tint); border-color: #E9D2E1; }
+.proof-card.is-cream { background: var(--gold-tint); border-color: #EFDDAF; }
+
+.proof-icon {
+  display: grid;
+  place-items: center;
+  width: 2.875rem;
+  height: 2.875rem;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.proof-card.is-gold .proof-icon,
+.proof-card.is-blush .proof-icon { background: var(--plum); }
+.proof-icon svg { width: 1.375rem; height: 1.375rem; }
+
+.proof-figure {
+  font-family: var(--serif);
+  font-size: clamp(2.25rem, 7vw, 3.25rem);
+  line-height: 1.05;
+  color: var(--plum);
+  margin: 0.5rem 0 0;
+}
+.proof-unit { font-size: 0.55em; }
+.proof-card.is-cream .proof-figure { font-size: 1.75rem; margin-top: 1.1rem; }
+.proof-caption {
+  margin: 0;
+  max-width: 16rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--plum);
+}
+.proof-card.is-cream .proof-caption { color: var(--ink); }
+.proof-chip {
+  align-self: flex-start;
+  margin: 0.25rem 0 0;
+  background: var(--plum);
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+}
+
+/* ---------- Sections: shared ---------- */
+
+.section {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  border-top: 1px solid var(--border);
+}
+.section-card { background: var(--card); }
+
+.section h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1.25rem;
+  color: var(--ink);
+}
+.section-intro {
+  font-size: 1.1875rem;
+  color: var(--ink-soft);
+  max-width: 38rem;
+  margin-bottom: 2.5rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.section-card .card { background: var(--paper); }
+.card-body {
+  padding: 1.5rem 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.card-body h3 { font-size: 1.5rem; line-height: 1.2; }
+.card-body p { margin: 0; }
+
+svg text { font-family: var(--sans); }
+
+/* ---------- 2. What I Can Do for Your Team ---------- */
+
+#expertise h2 { margin-bottom: 2.5rem; }
+
+.bento {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.svc {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.svc > :not(.svc-deco) { position: relative; z-index: 1; }
+.svc-deco { position: absolute; z-index: 0; pointer-events: none; }
+
+/* Each card: skill name as the headline, then the copy */
+.svc-name {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 0.9rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid currentColor;
+  border-bottom-color: color-mix(in srgb, currentColor 25%, transparent);
+}
+.svc-text { margin: 0; color: var(--ink-soft); }
+
+/* Every card has its own colour; borders match the fill */
+.svc { border-radius: 20px; }
+
+.svc-lead { background: var(--plum); border-color: var(--plum); }
+.svc-lead .svc-name { color: #fff; }
+.svc-lead .svc-text { color: var(--on-dark); }
+
+.svc-gold { background: var(--gold); border-color: var(--gold); }
+.svc-gold .svc-name { color: var(--plum); }
+.svc-gold .svc-text { color: var(--ink); }
+
+.svc-blush { background: var(--blush); border-color: var(--blush); }
+.svc-blush .svc-name { color: var(--plum); }
+.svc-blush .svc-text { color: var(--ink); }
+
+.svc-aubergine { background: #3B1C32; border-color: #3B1C32; }
+.svc-aubergine .svc-name { color: #fff; }
+.svc-aubergine .svc-text { color: var(--on-dark); }
+
+.svc-cream { background: var(--gold-tint); border-color: var(--gold-tint); }
+.svc-cream .svc-name { color: var(--plum); }
+.svc-cream .svc-text { color: var(--ink); }
+
+.svc-mauve { background: var(--mauve); border-color: var(--mauve); }
+.svc-mauve .svc-name,
+.svc-mauve .svc-text { color: #fff; }
+
+.svc-lavender { background: #E4D4EC; border-color: #E4D4EC; }
+.svc-lavender .svc-name { color: var(--plum); }
+.svc-lavender .svc-text { color: var(--ink); }
+
+.svc-berry { background: #B5476C; border-color: #B5476C; }
+.svc-berry .svc-name,
+.svc-berry .svc-text { color: #fff; }
+
+.svc-peach { background: #F5D3B0; border-color: #F5D3B0; }
+.svc-peach .svc-name { color: var(--plum); }
+.svc-peach .svc-text { color: var(--ink); }
+
+/* ---------- 4. Experience career line ---------- */
+
+.career {
+  --rail: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tl-item {
+  position: relative;
+  padding: 0 0 3.25rem 1.75rem;
+}
+.tl-item:last-child { padding-bottom: 0; }
+
+/* The vertical line and the diamond marker */
+.tl-item::before {
+  content: "";
+  position: absolute;
+  top: 0.35rem;
+  bottom: 0;
+  left: var(--rail);
+  width: 1px;
+  background: color-mix(in srgb, var(--mauve) 45%, transparent);
+}
+.tl-item::after {
+  content: "";
+  position: absolute;
+  top: 0.3rem;
+  left: calc(var(--rail) - 0.375rem);
+  width: 0.75rem;
+  height: 0.75rem;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+.tl-when { margin-bottom: 0.6rem; }
+.tl-year {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: var(--gold-deep);
+}
+
+.tl-role {
+  margin: 0;
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+  line-height: 1.15;
+  color: var(--plum);
+}
+.tl-org {
+  margin: 0.6rem 0 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.tl-list {
+  margin: 0;
+  list-style: disc;
+  padding-left: 1.25rem;
+  max-width: 44rem;
+}
+.tl-list li { margin-bottom: 0.55rem; line-height: 1.6; }
+.tl-list li::marker { color: var(--mauve); }
+.tl-outcome {
+  display: inline-block;
+  margin: 1.1rem 0 0;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--gold-deep);
+  background: var(--gold-tint);
+  color: var(--gold-deep);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+@media (min-width: 48rem) {
+  .career { --rail: 13rem; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 13rem minmax(0, 1fr);
+    padding-left: 0;
+  }
+  .tl-when { margin: 0; padding-right: 1.5rem; }
+  .tl-body { padding-left: 2.5rem; }
+  .tl-item::before { top: 0.6rem; }
+  .tl-item::after { top: 0.55rem; }
+  .tl-year { padding-top: 0.2rem; }
+}
+
+/* ---------- 5. Portfolio ---------- */
+
+.folio {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+.folio-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.75rem;
+  border-radius: 20px;
+}
+.folio-name {
+  margin: 0 0 0.9rem;
+  padding-bottom: 0.9rem;
+  align-self: stretch;
+  font-size: 2rem;
+  line-height: 1.1;
+  border-bottom: 1px solid currentColor;
+  border-bottom-color: color-mix(in srgb, currentColor 25%, transparent);
+}
+.folio-list {
+  align-self: stretch;
+  list-style: none;
+  margin: 0 0 1.75rem;
+  padding: 0;
+}
+.folio-list li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid currentColor;
+  border-bottom-color: color-mix(in srgb, currentColor 18%, transparent);
+  line-height: 1.4;
+}
+.folio-list li:last-child { border-bottom: 0; }
+.folio-card .button { margin-top: auto; }
+
+.folio-plum { background: var(--plum); color: #fff; }
+.folio-plum .folio-name { color: #fff; }
+.folio-plum .folio-list { color: var(--on-dark); }
+
+.folio-gold { background: var(--gold); color: var(--plum); }
+.folio-gold .folio-name { color: var(--plum); }
+.folio-gold .folio-list { color: var(--ink); }
+
+.folio-blush { background: var(--blush); color: var(--plum); }
+.folio-blush .folio-name { color: var(--plum); }
+.folio-blush .folio-list { color: var(--ink); }
+
+/* ---------- 6. Skills and Tools ---------- */
+
+#skills-and-tools h2 { margin-bottom: 3rem; }
+.skill-grid { display: grid; gap: 3rem 1.5rem; }
+.skill-card {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.25rem 1.5rem 0.75rem;
+  box-shadow: 0 10px 28px rgba(94, 42, 80, 0.07);
+}
+.skill-pill {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0.65rem 1.6rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--plum), #7A3B68);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.skill-list { list-style: none; margin: 0; padding: 0; }
+.skill-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.4;
+  color: var(--ink);
+}
+.skill-list li:last-child { border-bottom: 0; }
+.skill-list li::before {
+  content: "";
+  flex: none;
+  width: 1.375rem;
+  height: 1.375rem;
+  border-radius: 50%;
+  background: var(--plum) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F3C9E3' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6l6 6-6 6'/%3E%3C/svg%3E") center / 70% no-repeat;
+}
+
+/* ---------- 2. Who I Am ---------- */
+.about-grid { display: grid; gap: 2.5rem; align-items: stretch; }
+.about-grid .proof-grid { gap: 1rem; }
+@media (min-width: 64rem) {
+  .about-grid { grid-template-columns: minmax(0, 1fr) 24rem; gap: 4rem; }
+  /* Cards share the height of the text, so top and bottom line up with it */
+  .about-grid .proof-grid { grid-template-columns: 1fr; grid-auto-rows: 1fr; }
+  .about-grid .proof-card {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    column-gap: 1rem;
+    row-gap: 0.15rem;
+    align-content: center;
+    padding: 0.9rem 1.5rem;
+  }
+  .about-grid .proof-icon { grid-row: 1 / span 3; align-self: start; width: 2.5rem; height: 2.5rem; }
+  .about-grid .proof-card > :not(.proof-icon) { grid-column: 2; }
+  .about-grid .proof-figure { margin: 0; font-size: 2.25rem; }
+  .about-grid .proof-card.is-cream .proof-figure { font-size: 1.6rem; margin: 0; }
+  .about-grid .proof-caption { max-width: none; font-size: 0.9375rem; line-height: 1.4; }
+  .about-grid .proof-chip { margin: 0.25rem 0 0; justify-self: start; }
+}
+.about-grid .about { margin-bottom: -1.1rem; }
+.about { max-width: 40rem; }
+.about p { margin: 0 0 1.1rem; color: var(--ink-soft); }
+.about .about-lead {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 4vw, 1.875rem);
+  line-height: 1.3;
+  color: var(--plum);
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- 7. Education and Certificates ---------- */
+
+#education h2 { margin-bottom: 3rem; }
+/* Round bullets with a small gold diamond, the same shape as the Experience markers */
+#education .skill-list li::before {
+  background: var(--plum) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 7l5 5-5 5-5-5z' fill='%23E3B866'/%3E%3C/svg%3E") center / 100% no-repeat;
+}
+.edu-list li {
+  position: relative;
+  align-items: flex-start;
+  border-bottom: 0;
+}
+.edu-list li::before { margin-top: 0.2rem; }
+/* The line that carries on from the MSc down to the BSc */
+.edu-list li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0.6875rem;
+  top: 2.425rem;
+  bottom: -1.05rem;
+  width: 2px;
+  margin-left: -1px;
+  background: color-mix(in srgb, var(--plum) 35%, transparent);
+}
+.edu-list li > div { min-width: 0; }
+.edu-title {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--plum);
+}
+.edu-school { margin: 0.2rem 0 0; color: var(--ink-soft); }
+.edu-meta { margin: 0.55rem 0 0; }
+.edu-date { margin: 0.55rem 0 0; font-size: 0.875rem; font-weight: 500; color: var(--gold-deep); }
+.edu-meta .edu-date { margin: 0; }
+
+/* Achievement, centred and set apart from the degrees */
+.edu-award {
+  margin: 1rem 0 0.75rem;
+  padding: 0.9rem 1rem;
+  text-align: center;
+  background: var(--gold-tint);
+  border: 1px solid var(--gold);
+  border-radius: 16px;
+}
+.edu-award-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-bottom: 0.4rem;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.edu-award-icon svg { width: 1.125rem; height: 1.125rem; }
+.edu-award .edu-title { font-size: 1.125rem; }
+.edu-award .edu-school { font-size: 0.875rem; line-height: 1.4; }
+.edu-award .edu-date { margin-top: 0.3rem; font-size: 0.8125rem; }
+
+/* ---------- 8. Let's Talk ---------- */
+
+.contact-card {
+  background: var(--plum);
+  color: #fff;
+  border-radius: 20px;
+  padding: clamp(2rem, 6vw, 4rem);
+  display: grid;
+  gap: 2rem;
+}
+.contact-card h2 { color: #fff; margin-bottom: 1rem; }
+.contact-text { color: var(--on-dark); font-size: 1.1875rem; max-width: 30rem; margin: 0; }
+.contact-label { color: var(--blush); margin: 0 0 0.5rem; }
+.contact-actions p { margin: 0 0 1.25rem; }
+.contact-actions p:last-child { margin-bottom: 0; }
+.contact-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.contact-buttons .button { padding-left: 1.25rem; padding-right: 1.25rem; }
+.contact-mail {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 6vw, 1.875rem);
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background: var(--plum);
+  color: var(--on-dark);
+  padding: 3rem 0;
+  text-align: center;
+}
+.site-footer .brand-footer {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0 0 1rem;
+}
+.site-footer a { color: var(--on-dark); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; text-underline-offset: 0.3em; }
+.site-footer p { margin: 0 auto 0.75rem; font-size: 0.875rem; }
+
+/* ---------- Wider screens ---------- */
+
+@media (min-width: 48rem) {
+  :root { --gutter: 2rem; }
+
+  .hero { padding: 5rem 0 5.5rem; }
+  .hero-greeting { padding-left: 4rem; }
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr) 21rem;
+    gap: 4rem;
+  }
+  .hero-visual { order: 2; flex-direction: column; align-items: stretch; gap: 1.25rem; }
+  .portrait { width: 100%; }
+  .portrait-cert { max-width: none; text-align: center; font-size: 1rem; padding: 1rem 1.25rem; }
+  .portrait svg { width: 4.5rem; height: 4.5rem; }
+
+  .proof { margin-top: -4.25rem; }
+  .proof-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+
+
+  .bento { grid-template-columns: repeat(2, 1fr); }
+  .svc-lead { grid-column: 1 / -1; }
+  .contact-card { grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; }
+}
+
+/* Large screens: three across */
+@media (min-width: 64rem) {
+  .bento { grid-template-columns: repeat(12, 1fr); gap: 1rem; }
+  .svc-lead, .svc-gold, .svc-blush, .svc-small { grid-column: span 4; }
+  .folio { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+}
+
+/* Skills: two cards across */
+@media (min-width: 48rem) {
+  .skill-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Phones: tighter and easier to scroll (tablet and desktop are untouched) ---------- */
+@media (max-width: 47.99rem) {
+  body { font-size: 1rem; line-height: 1.55; }
+
+  /* Hero */
+  .hero { padding: 1.75rem 0 2.25rem; }
+  .hero-grid { gap: 1.5rem; }
+  .portrait { width: 11rem; }
+  .hero-greeting { padding-left: 0; margin-bottom: 0.5rem; }
+  .hero h1 { margin-bottom: 1rem; }
+  .lead { font-size: 1.0625rem; }
+  .hero-chips { margin-top: 1rem; }
+  .hero-actions { margin-top: 1.5rem; gap: 0.75rem; }
+  .hero-actions .button { flex: 1 1 100%; text-align: center; }
+
+  /* Shared section spacing */
+  .section { padding: 3rem 0; }
+  .section h2 { margin-bottom: 1rem; }
+  .section-intro { font-size: 1.0625rem; margin-bottom: 1.5rem; }
+  #expertise h2 { margin-bottom: 1.5rem; }
+  #skills-and-tools h2, #education h2 { margin-bottom: 2.5rem; }
+
+  /* About: the three highlight cards become compact rows with the icon on the left */
+  .about-grid { gap: 1.5rem; }
+  .about-grid .proof-card {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    column-gap: 1rem;
+    row-gap: 0.15rem;
+    align-content: center;
+    padding: 1rem 1.25rem;
+  }
+  .about-grid .proof-icon { grid-row: 1 / span 3; align-self: start; width: 2.5rem; height: 2.5rem; }
+  .about-grid .proof-card > :not(.proof-icon) { grid-column: 2; }
+  .about-grid .proof-figure { margin: 0; font-size: 2rem; }
+  .about-grid .proof-card.is-cream .proof-figure { font-size: 1.5rem; margin: 0; }
+  .about-grid .proof-caption { max-width: none; font-size: 0.9375rem; line-height: 1.4; }
+  .about-grid .proof-chip { margin: 0.25rem 0 0; justify-self: start; }
+
+  /* Expertise */
+  .bento { gap: 0.75rem; }
+  .svc { padding: 1.25rem; }
+  .svc-name { font-size: 1.35rem; margin-bottom: 0.7rem; padding-bottom: 0.7rem; }
+
+  /* Experience */
+  .tl-item { padding-bottom: 2.25rem; }
+  .tl-org { margin: 0.4rem 0 0.8rem; }
+  .tl-list li { margin-bottom: 0.4rem; line-height: 1.5; }
+  .tl-outcome { margin-top: 0.8rem; padding: 0.6rem 0.85rem; font-size: 0.875rem; }
+
+  /* Portfolio */
+  .folio { gap: 0.75rem; }
+  .folio-card { padding: 1.5rem; }
+  .folio-name { font-size: 1.75rem; margin-bottom: 0.5rem; padding-bottom: 0.6rem; }
+  .folio-list { margin-bottom: 1.25rem; }
+  .folio-list li { padding: 0.45rem 0; }
+
+  /* Skills, Education */
+  .skill-grid { gap: 2.25rem; }
+  .skill-card { padding: 2rem 1.25rem 0.4rem; }
+  .skill-list li { padding: 0.6rem 0; }
+  .edu-award { margin: 0.75rem 0 0.5rem; padding: 0.75rem; }
+
+  /* Let's Talk and footer */
+  .contact-card { padding: 1.75rem 1.5rem; gap: 1.5rem; }
+  .contact-buttons .button { flex: 1 1 0; text-align: center; padding-left: 0.75rem; padding-right: 0.75rem; }
+  .contact-buttons .button:first-child { flex-basis: 100%; }
+  .portrait-cert { font-size: 0.875rem; padding: 0.7rem 0.9rem; }
+  .site-footer { padding: 2rem 0; }
+}
